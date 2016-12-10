@@ -1,0 +1,764 @@
+*-----------------------------------------------------------
+* Title      : TESTING CODE
+* Written by : A BISCUIT
+* Date       : 2/30/2015
+* Description: ********** ALL TEST PASSED **********
+*-----------------------------------------------------------
+        ORG    $7000
+
+START:
+*--------------------------- ADD ---------------------------
+
+*------------ FIXED DESTINATION: SOURCE OPERAND ------------
+
+        ADD.B   D0, D1                  ;ADDING D0 WITH D1, THEN STORE RESULT IN D1
+        ADD.B   (A0), D1                ;ADDING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1
+        ADD.B   (A0)+, D1               ;ADDING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1, THEN INCREMENT THE POINTER
+        ADD.B   -(A0), D1               ;DECREMENT THE POINTER, THEN ADDING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1
+        ADD.B   $4000, D1               ;ADDINT DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN D1
+        ADD.B   $40000000, D1           ;ADDINT DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN 
+        ADD.B   #$1, D1                 ;ADDING A BYTE SIZE DATA WITH D1 AND STORE RESULT IN D1
+        
+        ADD.W   D0, D1                  ;ADDING D0 AND D1, THEN STORE RESULT IN D1
+        ADD.W   A0, D1                  ;ADDING DATA STORING IN A0 WITH D1 AND STORE RESULT IN D1
+        ADD.W   (A0), D1                ;ADDING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1
+        ADD.W   (A0)+, D1               ;ADDING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1, THEN INCREMENT THE POINTER
+        ADD.W   -(A0), D1               ;DECREMENT THE POINTER, THEN ADDING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1
+        ADD.W   $4000, D1               ;ADDINT DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN 
+        ADD.W   $40000000, D1           ;ADDINT DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN 
+        ADD.W   #1234, D1               ;THIS WILL PRINT OUT "BAD DATA" TWICE SINCE IT'S NOT WORD SIZE
+        
+        ADD.L   D0, D1                  ;ADDING D0 AND D1, THEN STORE RESULT IN D1
+        ADD.L   A0, D1                  ;ADDING DATA STORING IN A0 WITH D1 AND STORE RESULT IN D1
+        ADD.L   (A0), D1                ;ADDING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1
+        ADD.L   (A0)+, D1               ;ADDING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1, THEN INCREMENT THE POINTER
+        ADD.L   -(A0), D1               ;DECREMENT THE POINTER, THEN ADDING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1
+        ADD.L   $4000, D1               ;ADDINT DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN 
+        ADD.L   $40000000, D1           ;ADDINT DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN 
+        ;ADD.L   #1234, D1              ;ADDING A LONG SIZE DATA WITH D1 AND STORE RESULT IN D1
+            
+*------------ FIXED SOURCE: DESTINATION OPERAND ------------
+
+        ADD.B   D0, (A0)                ;ADDING D0 WITH DATA THAT A0 POINTS TO, THEN STORE RESULT IN ADDRESS A0 POINTS TO
+        ADD.B   D0, (A0)+               ;ADDING D0 WITH DATA THAT A0 POINTS TO, STORE RESULT IN THE ADDRESS A0 POINT TO AND INCREMENT POINTER 
+        ADD.B   D0, -(A0)               ;ADDING D0 WITH DATA THAT A0 POINTS TO, DECREMENT POINTER, THEN STORE RESULT IN THAT ADDRESS 
+        ADD.B   D0, $4000               ;ADDINT D0 WITH DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN THAT ADDRESS
+        ADD.B   D0, $40000000           ;ADDINT D0 WITH DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN THAT ADDRESS
+        
+        ADD.W   D0, (A0)                ;ADDING D0 WITH DATA THAT A0 POINTS TO, THEN STORE RESULT IN ADDRESS A0 POINTS TO
+        ADD.W   D0, (A0)+               ;ADDING D0 WITH DATA THAT A0 POINTS TO, STORE RESULT IN THE ADDRESS A0 POINT TO AND INCREMENT POINTER 
+        ADD.W   D0, -(A0)               ;ADDING D0 WITH DATA THAT A0 POINTS TO, DECREMENT POINTER, THEN STORE RESULT IN THAT ADDRESS 
+        ADD.W   D0, $4000               ;ADDINT D0 WITH DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN THAT ADDRESS
+        ADD.W   D0, $40000000           ;ADDINT D0 WITH DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN THAT ADDRESS
+        
+        ADD.L   D0, (A0)                ;ADDING D0 WITH DATA THAT A0 POINTS TO, THEN STORE RESULT IN ADDRESS A0 POINTS TO
+        ADD.L   D0, (A0)+               ;ADDING D0 WITH DATA THAT A0 POINTS TO, STORE RESULT IN THE ADDRESS A0 POINT TO AND INCREMENT POINTER 
+        ADD.L   D0, -(A0)               ;ADDING D0 WITH DATA THAT A0 POINTS TO, DECREMENT POINTER, THEN STORE RESULT IN THAT ADDRESS 
+        ADD.L   D0, $4000               ;ADDINT D0 WITH DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN THAT ADDRESS
+        ADD.L   D0, $40000000           ;ADDINT D0 WITH DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN THAT ADDRESS
+        
+*--------------------------- ADDA --------------------------
+        
+        ADDA.W	D4,  A6
+		ADDA.W	A6,  A6
+		ADDA.W	(A5),  A6
+		ADDA.W	-(A0),  A6
+		ADDA.W	(A1)+,  A6
+		ADDA.W	#$AB46,  A6
+		ADDA.W	$AB46,  A6
+		ADDA.L	D4,  A6
+		ADDA.L	A6,  A6
+		ADDA.L	(A5),  A6
+		ADDA.L	-(A0),  A6
+		ADDA.L	(A1)+,  A6
+		ADDA.L	#$012B8ACD,  A6
+		ADDA.L	$012B8ACD,  A6
+		
+	
+*----- BCLR WITH BIT NUMBER DYNAMIC, SPECIFIED IN A REGISTER -----
+        BCLR    D0, D1
+        BCLR    D0, (A0)
+        BCLR    D0, (A0)+
+        BCLR    D0, -(A0)
+        BCLR    D0, $4000
+        BCLR    D0, $4000000
+        
+*----- BCLR WITH BIT NUMBER STATIC, SPECIFIED IN A MEMORY -----
+
+        BCLR    #1234, D1
+        BCLR    #1234, (A0)
+        BCLR    #1234, (A0)+
+        BCLR    #1234, -(A0)
+        BCLR    #1234, $4000
+        BCLR    #1234, $40000000
+*-----------------------------------------------------------
+       
+        BCC     TEST1
+        BCS     TEST1
+        BGE     TEST1
+        BLT     TEST1
+        BVC     TEST1
+        BRA     TEST1
+        JSR     TEST2
+
+TEST1   MOVE.B  #12, D0
+        
+TEST2   MOVE.B  #12, D0
+
+*---------- CMP ----------
+        CMP.B   D1 ,D0
+        CMP.B   (A0), D0
+        CMP.B   (A0)+, D0
+        CMP.B   -(A0), D0
+        CMP.B   $4000, D0
+        CMP.B   $40000000, D0
+        CMP.B   #1, D0
+        
+        CMP.W   D1 ,D0
+        CMP.W   A0, D0
+        CMP.W   (A0), D0
+        CMP.W   (A0)+, D0
+        CMP.W   -(A0), D0
+        CMP.W   $4000, D0
+        CMP.W   $40000000, D0
+        CMP.W   #1234, D0
+        
+        CMP.L   D1 ,D0
+        CMP.L   A0, D0
+        CMP.L   (A0), D0
+        CMP.L   (A0)+, D0
+        CMP.L   -(A0), D0
+        CMP.L   $4000, D0
+        CMP.L   $40000000, D0
+        CMP.L   #1234, D0
+        
+*---------- CMPI ----------
+
+        CMPI.B  #1, D0
+        CMPI.B  #1,(A0)
+        CMPI.B  #1, (A0)+
+        CMPI.B  #1, -(A0)
+        CMPI.B  #1, $4000
+        CMPI.B  #1, $40000000
+        
+        CMPI.W  #1234, D0
+        CMPI.W  #1234, (A0)
+        CMPI.W  #1234, (A0)+
+        CMPI.W  #1234, -(A0)
+        CMPI.W  #1234, $4000
+        CMPI.W  #1234, $40000000
+        
+        CMPI.L  #1234, D0
+        CMPI.L  #1234, (A0)
+        CMPI.L  #1234, (A0)+
+        CMPI.L  #1234, -(A0)
+        CMPI.L  #1234, $4000
+        CMPI.L  #1234, $40000000
+        
+*-----------------------------------------------------------
+
+        EOR.B		D3,D4
+        EOR.B		D3,(A2)
+        EOR.B		D3,(A2)+
+        EOR.B		D3,-(A2)
+        EOR.B		D3,$1234
+        EOR.B		D3,$12340000
+
+        EOR.W	D3,D4
+        EOR.W	D3,(A2)
+        EOR.W	D3,(A2)+
+        EOR.W	D3,-(A2)
+        EOR.W	D3,$1234
+        EOR.W	D3,$12340000
+
+        EOR.L		D3,D4
+        EOR.L		D3,(A2)
+        EOR.L		D3,(A2)+
+        EOR.L		D3,-(A2)
+        EOR.L		D3,$1234
+        EOR.L		D3,$12340000
+
+*-----------------------------------------------------------
+
+        LEA     (A1), A0
+        LEA     $4000, A0
+        LEA     $40000000, A0
+        
+        NEG     D0
+        NEG     (A0)
+        NEG     (A0)+
+        NEG     -(A0)
+        NEG     $4000
+        NEG     $40000000
+        
+        *-------------------------------------------------------------------------------
+* ALL POSSIBLE MOVE COMMANDS (00 size destRegister destMode srcMode srcRegister)
+*                            DECIMAL AND BINARY IMMEDIATE DATA AND ADDRESSING 
+*                            NOT CONSIDERED SINCE MACHINE LAGUAGE IS ALL HEX ANYHOW
+*-------------------------------------------------------------------------------
+
+            *-----------------------------------------------------------------*
+            * BYTE MOVES : PASSED                                             *
+            *-----------------------------------------------------------------*
+
+            MOVE.B D0, D1                     ;DATA REGISTER TO DATA REGISTER
+            MOVE.B D0, (A0)                   ;DATA REGISTER TO INDIRECT ADDRESS REGISTER (NEVER USE A7)
+            MOVE.B D0, (A0)+                  ;DATA REGISTER TO INDIRECT ADDRESS REGISTER POST INC (NEVER USE A7)
+            MOVE.B D0, -(A0)                  ;DATA REGISTER TO INDIRECT ADDRESS REGISTER PRE DEC (NEVER USE A7)
+            MOVE.B D0, $FFFE                  ;DATA REGISTER TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.B D0, $FFFFFFFE              ;DATA REGISTER TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+            
+            MOVE.B (A0), D0                   ;INDIRECT ADDRESS REGISTER TO DATA REGISTER
+            MOVE.B (A0), (A1)                 ;INDIRECT ADDRESS REGISTER TO INDIRECT ADDRESS REGISTER
+            MOVE.B (A0), (A1)+                ;INDIRECT ADDRESS REGISTER TO INDIRECT ADDRESS REGISTER POST INC
+            MOVE.B (A0), -(A1)                ;INDIRECT ADDRESS REGISTER TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.B (A0), $FFFE                ;INDIRECT ADDRESS REGISTER TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.B (A0), $FFFFFFFE            ;INDIRECT ADDRESS REGISTER TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+
+            MOVE.B (A0)+, D1                  ;INDIRECT ADDRESS REGISTER POST INC TO DATA REGISTER
+            MOVE.B (A0)+, (A0)                ;INDIRECT ADDRESS REGISTER POST INC TO INDIRECT ADDRESS REGISTER (NEVER USE A7)
+            MOVE.B (A0)+, (A0)+               ;INDIRECT ADDRESS REGISTER POST INC TO INDIRECT ADDRESS REGISTER POST INC (NEVER USE A7)
+            MOVE.B (A0)+, -(A0)               ;INDIRECT ADDRESS REGISTER POST INC TO INDIRECT ADDRESS REGISTER PRE DEC (NEVER USE A7)
+            MOVE.B (A0)+, $FFFE               ;INDIRECT ADDRESS REGISTER POST INC TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.B (A0)+, $FFFFFFFE           ;INDIRECT ADDRESS REGISTER POST INC TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+
+            MOVE.B -(A0), D1                  ;INDIRECT ADDRESS REGISTER PRE DEC TO DATA REGISTER
+            MOVE.B -(A0), (A0)                ;INDIRECT ADDRESS REGISTER PRE DEC TO INDIRECT ADDRESS REGISTER (NEVER USE A7)
+            MOVE.B -(A0), (A0)+               ;INDIRECT ADDRESS REGISTER PRE DEC TO INDIRECT ADDRESS REGISTER POST INC (NEVER USE A7)
+            MOVE.B -(A0), -(A0)               ;INDIRECT ADDRESS REGISTER PRE DEC TO INDIRECT ADDRESS REGISTER PRE DEC (NEVER USE A7)
+            MOVE.B -(A0), $FFFE               ;INDIRECT ADDRESS REGISTER PRE DEC TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.B -(A0), $FFFFFFFE           ;INDIRECT ADDRESS REGISTER PRE DEC TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+
+            MOVE.B $FFFE, D1                  ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO DATA REGISTER
+            MOVE.B $FFFE, (A0)                ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO INDIRECT ADDRESS REGISTER
+            MOVE.B $FFFE, (A0)+               ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO INDIRECT ADDRESS REGISTER POST INC
+            MOVE.B $FFFE, -(A0)               ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.B $FFFE, $AAAA               ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO ABSOLUTE WORD ADDRESS IN DECIMAL (NO MORE THAN 4 DIGITS)
+            MOVE.B $FFFE, $AAAAAAAA           ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO ABSOLUTE LONGWORD ADDRESS IN DECIMAL (NO MORE THAN 8 DIGITS)
+            
+            MOVE.B $FFFFFFFE, D1              ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO DATA REGISTER
+            MOVE.B $FFFFFFFE, (A0)            ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO INDIRECT ADDRESS REGISTER
+            MOVE.B $FFFFFFFE, (A0)+           ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO INDIRECT ADDRESS REGISTER POST INC
+            MOVE.B $FFFFFFFE, -(A0)           ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.B $FFFFFFFE, $AAAA           ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO ABSOLUTE WORD ADDRESS IN DECIMAL (NO MORE THAN 4 DIGITS)
+            MOVE.B $FFFFFFFE, $AAAAAAAA       ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO ABSOLUTE LONGWORD ADDRESS IN DECIMAL (NO MORE THAN 8 DIGITS)
+            
+            MOVE.B #$AF, D1                   ;IMMEDIATE BYTE DATA IN HEX (NO MORE THAN 2 DIGITS) TO DATA REGISTER
+            MOVE.B #$AF, (A0)                 ;IMMEDIATE BYTE DATA IN HEX (NO MORE THAN 2 DIGITS) TO INDIRECT ADDRESS REGISTER
+            MOVE.B #$AF, (A0)+                ;IMMEDIATE BYTE DATA IN HEX (NO MORE THAN 2 DIGITS) TO INDIRECT ADDRESS REGISTER POST INC
+            MOVE.B #$AF, -(A0)                ;IMMEDIATE BYTE DATA IN HEX (NO MORE THAN 2 DIGITS) TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.B #$AF, $AAAA                ;IMMEDIATE BYTE DATA IN HEX (NO MORE THAN 2 DIGITS) TO ABSOLUTE WORD ADDRESS IN DECIMAL (NO MORE THAN 4 DIGITS)
+            MOVE.B #$AF, $AAAAAAAA            ;IMMEDIATE BYTE DATA IN HEX (NO MORE THAN 2 DIGITS) TO ABSOLUTE LONGWORD ADDRESS IN DECIMAL (NO MORE THAN 8 DIGITS)
+            
+            *-----------------------------------------------------------------*
+            * WORD MOVES : PASSED                                             *
+            *-----------------------------------------------------------------*
+
+            MOVE.W D0, D1                     ;DATA REGISTER TO DATA REGISTER
+            MOVE.W D0, (A0)                   ;DATA REGISTER TO INDIRECT ADDRESS REGISTER (NEVER USE A7)
+            MOVE.W D0, (A0)+                  ;DATA REGISTER TO INDIRECT ADDRESS REGISTER POST INC (NEVER USE A7)
+            MOVE.W D0, -(A0)                  ;DATA REGISTER TO INDIRECT ADDRESS REGISTER PRE DEC (NEVER USE A7)
+            MOVE.W D0, $FFFE                  ;DATA REGISTER TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.W D0, $FFFFFFFE              ;DATA REGISTER TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+            
+            MOVE.W A0, D0                     ;ADDRESS REGISTER TO DATA REGISTER
+            MOVE.W A0, (A0)                   ;ADDRESS REGISTER TO INDIRECT ADDRESS REGISTER
+            MOVE.W A0, (A0)+                  ;ADDRESS REGISTER TO INDIRECT ADDRESS REGOSTER POST INC
+            MOVE.W A0, -(A0)                  ;ADDRESS REGISTER TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.W A0, $FFFE                  ;ADDRESS REGISTER TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.W A0, $FFFFFFFE              ;ADDRESS REGISTER TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+            
+            MOVE.W (A0), D0                   ;INDIRECT ADDRESS REGISTER TO DATA REGISTER
+            MOVE.W (A0), (A1)                 ;INDIRECT ADDRESS REGISTER TO INDIRECT ADDRESS REGISTER
+            MOVE.W (A0), (A1)+                ;INDIRECT ADDRESS REGISTER TO INDIRECT ADDRESS REGISTER POST INC
+            MOVE.W (A0), -(A1)                ;INDIRECT ADDRESS REGISTER TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.W (A0), $FFFE                ;INDIRECT ADDRESS REGISTER TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.W (A0), $FFFFFFFE            ;INDIRECT ADDRESS REGISTER TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+
+            MOVE.W (A0)+, D1                  ;INDIRECT ADDRESS REGISTER POST INC TO DATA REGISTER
+            MOVE.W (A0)+, (A0)                ;INDIRECT ADDRESS REGISTER POST INC TO INDIRECT ADDRESS REGISTER (NEVER USE A7)
+            MOVE.W (A0)+, (A0)+               ;INDIRECT ADDRESS REGISTER POST INC TO INDIRECT ADDRESS REGISTER POST INC (NEVER USE A7)
+            MOVE.W (A0)+, -(A0)               ;INDIRECT ADDRESS REGISTER POST INC TO INDIRECT ADDRESS REGISTER PRE DEC (NEVER USE A7)
+            MOVE.W (A0)+, $FFFE               ;INDIRECT ADDRESS REGISTER POST INC TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.W (A0)+, $FFFFFFFE           ;INDIRECT ADDRESS REGISTER POST INC TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+
+            MOVE.W -(A0), D1                  ;INDIRECT ADDRESS REGISTER PRE DEC TO DATA REGISTER
+            MOVE.W -(A0), (A0)                ;INDIRECT ADDRESS REGISTER PRE DEC TO INDIRECT ADDRESS REGISTER (NEVER USE A7)
+            MOVE.W -(A0), (A0)+               ;INDIRECT ADDRESS REGISTER PRE DEC TO INDIRECT ADDRESS REGISTER POST INC (NEVER USE A7)
+            MOVE.W -(A0), -(A0)               ;INDIRECT ADDRESS REGISTER PRE DEC TO INDIRECT ADDRESS REGISTER PRE DEC (NEVER USE A7)
+            MOVE.W -(A0), $FFFE               ;INDIRECT ADDRESS REGISTER PRE DEC TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.W -(A0), $FFFFFFFE           ;INDIRECT ADDRESS REGISTER PRE DEC TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+
+            MOVE.W $FFFE, D1                  ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO DATA REGISTER
+            MOVE.W $FFFE, (A0)                ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO INDIRECT ADDRESS REGISTER
+            MOVE.W $FFFE, (A0)+               ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO INDIRECT ADDRESS REGISTER POST INC
+            MOVE.W $FFFE, -(A0)               ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.W $FFFE, $AAAA               ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO ABSOLUTE WORD ADDRESS IN DECIMAL (NO MORE THAN 4 DIGITS)
+            MOVE.W $FFFE, $AAAAAAAA           ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO ABSOLUTE LONGWORD ADDRESS IN DECIMAL (NO MORE THAN 8 DIGITS)
+            
+            MOVE.W $FFFFFFFE, D1              ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO DATA REGISTER
+            MOVE.W $FFFFFFFE, (A0)            ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO INDIRECT ADDRESS REGISTER
+            MOVE.W $FFFFFFFE, (A0)+           ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO INDIRECT ADDRESS REGISTER POST INC
+            MOVE.W $FFFFFFFE, -(A0)           ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.W $FFFFFFFE, $AAAA           ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO ABSOLUTE WORD ADDRESS IN DECIMAL (NO MORE THAN 4 DIGITS)
+            MOVE.W $FFFFFFFE, $AAAAAAAA       ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO ABSOLUTE LONGWORD ADDRESS IN DECIMAL (NO MORE THAN 8 DIGITS)
+            
+            MOVE.W #$AFFF, D1                 ;IMMEDIATE WORD DATA IN HEX (NO MORE THAN 2 DIGITS) TO DATA REGISTER
+            MOVE.W #$AFFF, (A0)               ;IMMEDIATE WORD DATA IN HEX (NO MORE THAN 2 DIGITS) TO INDIRECT ADDRESS REGISTER
+            MOVE.W #$AFFF, (A0)+              ;IMMEDIATE WORD DATA IN HEX (NO MORE THAN 2 DIGITS) TO INDIRECT ADDRESS REGISTER POST INC
+            MOVE.W #$AFFF, -(A0)              ;IMMEDIATE WORD DATA IN HEX (NO MORE THAN 2 DIGITS) TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.W #$AFFF, $AAAA              ;IMMEDIATE WORD DATA IN HEX (NO MORE THAN 2 DIGITS) TO ABSOLUTE WORD ADDRESS IN DECIMAL (NO MORE THAN 4 DIGITS)
+            MOVE.W #$AFFF, $AAAAAAAA          ;IMMEDIATE WORD DATA IN HEX (NO MORE THAN 2 DIGITS) TO ABSOLUTE LONGWORD ADDRESS IN DECIMAL (NO MORE THAN 8 DIGITS) 
+
+            *-----------------------------------------------------------------*
+            * LONGWORD MOVES : PASSED                                         *
+            *-----------------------------------------------------------------*
+
+            MOVE.L D0, D1                     ;DATA REGISTER TO DATA REGISTER
+            MOVE.L D0, (A0)                   ;DATA REGISTER TO INDIRECT ADDRESS REGISTER (NEVER USE A7)
+            MOVE.L D0, (A0)+                  ;DATA REGISTER TO INDIRECT ADDRESS REGISTER POST INC (NEVER USE A7)
+            MOVE.L D0, -(A0)                  ;DATA REGISTER TO INDIRECT ADDRESS REGISTER PRE DEC (NEVER USE A7)
+            MOVE.L D0, $FFFE                  ;DATA REGISTER TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.L D0, $FFFFFFFE              ;DATA REGISTER TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+            
+            MOVE.L A0, D0                     ;ADDRESS REGISTER TO DATA REGISTER
+            MOVE.L A0, (A0)                   ;ADDRESS REGISTER TO INDIRECT ADDRESS REGISTER
+            MOVE.L A0, (A0)+                  ;ADDRESS REGISTER TO INDIRECT ADDRESS REGOSTER POST INC
+            MOVE.L A0, -(A0)                  ;ADDRESS REGISTER TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.L A0, $FFFE                  ;ADDRESS REGISTER TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.L A0, $FFFFFFFE              ;ADDRESS REGISTER TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+            
+            MOVE.L (A0), D0                   ;INDIRECT ADDRESS REGISTER TO DATA REGISTER
+            MOVE.L (A0), (A1)                 ;INDIRECT ADDRESS REGISTER TO INDIRECT ADDRESS REGISTER
+            MOVE.L (A0), (A1)+                ;INDIRECT ADDRESS REGISTER TO INDIRECT ADDRESS REGISTER POST INC
+            MOVE.L (A0), -(A1)                ;INDIRECT ADDRESS REGISTER TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.L (A0), $FFFE                ;INDIRECT ADDRESS REGISTER TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.L (A0), $FFFFFFFE            ;INDIRECT ADDRESS REGISTER TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+
+            MOVE.L (A0)+, D1                  ;INDIRECT ADDRESS REGISTER POST INC TO DATA REGISTER
+            MOVE.L (A0)+, (A0)                ;INDIRECT ADDRESS REGISTER POST INC TO INDIRECT ADDRESS REGISTER (NEVER USE A7)
+            MOVE.L (A0)+, (A0)+               ;INDIRECT ADDRESS REGISTER POST INC TO INDIRECT ADDRESS REGISTER POST INC (NEVER USE A7)
+            MOVE.L (A0)+, -(A0)               ;INDIRECT ADDRESS REGISTER POST INC TO INDIRECT ADDRESS REGISTER PRE DEC (NEVER USE A7)
+            MOVE.L (A0)+, $FFFE               ;INDIRECT ADDRESS REGISTER POST INC TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.L (A0)+, $FFFFFFFE           ;INDIRECT ADDRESS REGISTER POST INC TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+
+            MOVE.L -(A0), D1                  ;INDIRECT ADDRESS REGISTER PRE DEC TO DATA REGISTER
+            MOVE.L -(A0), (A0)                ;INDIRECT ADDRESS REGISTER PRE DEC TO INDIRECT ADDRESS REGISTER (NEVER USE A7)
+            MOVE.L -(A0), (A0)+               ;INDIRECT ADDRESS REGISTER PRE DEC TO INDIRECT ADDRESS REGISTER POST INC (NEVER USE A7)
+            MOVE.L -(A0), -(A0)               ;INDIRECT ADDRESS REGISTER PRE DEC TO INDIRECT ADDRESS REGISTER PRE DEC (NEVER USE A7)
+            MOVE.L -(A0), $FFFE               ;INDIRECT ADDRESS REGISTER PRE DEC TO ABSOLUTE WORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) CAN BE SHORTER, NO MORE THAN 4 DIGITS
+            MOVE.L -(A0), $FFFFFFFE           ;INDIRECT ADDRESS REGISTER PRE DEC TO ABSOLUTE LONGWORD ADDRESS IN HEX, MUST BE EVEN (END IN 0, 2, 4, 6, 8, A, C, E) NO MORE THAN 8 DIGITS
+
+            MOVE.L $FFFE, D1                  ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO DATA REGISTER
+            MOVE.L $FFFE, (A0)                ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO INDIRECT ADDRESS REGISTER
+            MOVE.L $FFFE, (A0)+               ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO INDIRECT ADDRESS REGISTER POST INC
+            MOVE.L $FFFE, -(A0)               ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.L $FFFE, $AAAA               ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO ABSOLUTE WORD ADDRESS IN DECIMAL (NO MORE THAN 4 DIGITS)
+            MOVE.L $FFFE, $AAAAAAAA           ;ABSOLUTE WORD ADDRESS IN HEX (NO MORE THAN 4 DIGITS) TO ABSOLUTE LONGWORD ADDRESS IN DECIMAL (NO MORE THAN 8 DIGITS)
+            
+            MOVE.L $FFFFFFFE, D1              ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO DATA REGISTER
+            MOVE.L $FFFFFFFE, (A0)            ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO INDIRECT ADDRESS REGISTER
+            MOVE.L $FFFFFFFE, (A0)+           ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO INDIRECT ADDRESS REGISTER POST INC
+            MOVE.L $FFFFFFFE, -(A0)           ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.L $FFFFFFFE, $AAAA           ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO ABSOLUTE WORD ADDRESS IN DECIMAL (NO MORE THAN 4 DIGITS)
+            MOVE.L $FFFFFFFE, $AAAAAAAA       ;ABSOLUTE LONGWORD ADDRESS IN HEX (NO MORE THAN 8 DIGITS) TO ABSOLUTE LONGWORD ADDRESS IN DECIMAL (NO MORE THAN 8 DIGITS)
+            
+            MOVE.L #$AFFFFFFF, D1             ;IMMEDIATE LONGWORD DATA IN HEX (NO MORE THAN 8 DIGITS) TO DATA REGISTER
+            MOVE.L #$AFFFFFFF, (A0)           ;IMMEDIATE LONGWORD DATA IN HEX (NO MORE THAN 8 DIGITS) TO INDIRECT ADDRESS REGISTER
+            MOVE.L #$AFFFFFFF, (A0)+          ;IMMEDIATE LONGWORD DATA IN HEX (NO MORE THAN 8 DIGITS) TO INDIRECT ADDRESS REGISTER POST INC
+            MOVE.L #$AFFFFFFF, -(A0)          ;IMMEDIATE LONGWORD DATA IN HEX (NO MORE THAN 8 DIGITS) TO INDIRECT ADDRESS REGISTER PRE DEC
+            MOVE.L #$AFFFFFFF, $AAAA          ;IMMEDIATE LONGWORD DATA IN HEX (NO MORE THAN 8 DIGITS) TO ABSOLUTE WORD ADDRESS IN DECIMAL (NO MORE THAN 4 DIGITS)
+            MOVE.L #$AFFFFFFF, $AAAAAAAA      ;IMMEDIATE LONGWORD DATA IN HEX (NO MORE THAN 8 DIGITS) TO ABSOLUTE LONGWORD ADDRESS IN DECIMAL (NO MORE THAN 8 DIGITS)   
+
+
+*-------------------------------------------------------------------------------
+* ALL POSSIBLE MOVEA COMMANDS (00 size destRegister 001 srcMode srcRegister)
+*                             THE ONLY DIFFERENCES BETWEEN MOVEM AND MOVE IS THAT
+*                             THE DESTIMATION MUST BE AN ADDRESS REGISTER AND
+*                             DATA TO BOVE MUST BE WORD OR LONGWORD (NOT BYTE)
+*                             NOTE: I DONT UNDERSTAND MOVEA.W ABSOLUTE WORD/LONG 
+*                             WORD ADDRESS TO ADDRESS REGISTER, HOW MANY DIGITS?
+*                             MAY HAVE REDUNDANT CODE, IM NOT SURE YET!
+*-------------------------------------------------------------------------------  
+
+            *-----------------------------------------------------------------*
+            * WORD MOVES (0011) : PASSED                                      *
+            *-----------------------------------------------------------------*
+            
+            MOVEA.W D0, A0                    ;DATA REGISTER TO ADDRESS REGISTER, NEVER USE A7
+            MOVEA.W A1, A0                    ;ADDRESS REGISTER TO ADDRESS REGISTER, NEVER USE A7
+            MOVEA.W (A1), A0                  ;INDIRECT ADDRESS REGISTER TO ADDRESS REGISTER, NEVER USE A7
+            MOVEA.W (A1)+, A0                 ;INDIRECT ADDRESS REGISTER POST INC TO ADDRESS REGISTER, NEVER USE A7
+            MOVEA.W -(A1), A0                 ;INDIRECT ADDRESS REGISTER PRE DEC TO ADDRESS REGISTER, NEVER USE A7
+            MOVEA.W $FFFE, A0                 ;ABSOLUTE WORD ADDRESS TO ADDRESS REGISTER, NEVER USE A7, (HOW MANY DIGITS???!!!!)WORD ADDRESS MUST EVEN (END IN 0, 2, 4, 6, 8, A, C, E)
+            MOVEA.W $FFFFFFFE, A0             ;ABSOLUTE LONGWORD ADDRESS TO ADDRESS RIGISTER, NO A7! (HOW MANY DIGITS?? I STILL DONT KNOW!) MUST BE EVEN
+            MOVEA.W #$FFFE, A0                ;IMMEDIATE WORD DATA IN HEX TO ADDRESS REGISTER, NO A7! IM NOT SURE IF THIS SHOULD BE EVEN! MUST BE NO LONGER THAN 4 DIGITS!
+            MOVEA.W #$FFFFFFFE, A0            IMMEDIATE LONGWORD DATA IN HEX TO ADDRESS REGISTER, NO A7! EVEN? IDK!!! NO LONGER THAN 8 DIGITS!IS THIS THE SAME AS ABOVE?
+            
+            *-----------------------------------------------------------------*
+            * LONGWORD MOVES (0010) : PASSED                                  *
+            *-----------------------------------------------------------------*
+            
+            MOVEA.L D0, A0                    ;DATA REGISTER TO ADDRESS REGISTER, NEVER USE A7
+            MOVEA.L A1, A0                    ;ADDRESS REGISTER TO ADDRESS REGISTER, NEVER USE A7
+            MOVEA.L (A1), A0                  ;INDIRECT ADDRESS REGISTER TO ADDRESS REGISTER, NEVER USE A7
+            MOVEA.L (A1)+, A0                 ;INDIRECT ADDRESS REGISTER POST INC TO ADDRESS REGISTER, NEVER USE A7
+            MOVEA.L -(A1), A0                 ;INDIRECT ADDRESS REGISTER PRE DEC TO ADDRESS REGISTER, NEVER USE A7
+            MOVEA.L $FFFE, A0                 ;ABSOLUTE WORD ADDRESS TO ADDRESS REGISTER, NEVER USE A7, (HOW MANY DIGITS???!!!!)WORD ADDRESS MUST EVEN (END IN 0, 2, 4, 6, 8, A, C, E)
+            MOVEA.L $FFFFFFFE, A0             ;ABSOLUTE LONGWORD ADDRESS TO ADDRESS RIGISTER, NO A7! (HOW MANY DIGITS?? I STILL DONT KNOW!) MUST BE EVEN
+            MOVEA.L #$FFFE, A0                ;IMMEDIATE WORD DATA IN HEX TO ADDRESS REGISTER, NO A7! IM NOT SURE IF THIS SHOULD BE EVEN! MUST BE NO LONGER THAN 4 DIGITS! WE PROBABLY DONT NEED THIS!
+            MOVEA.L #$FFFFFFFE, A0            IMMEDIATE LONGWORD DATA IN HEX TO ADDRESS REGISTER, NO A7! EVEN? IDK!!! NO LONGER THAN 8 DIGITS!
+            
+            
+*------------------------ MOVEM -----------------------------------------            
+         
+            MOVEM.W     D0, (A0)
+            MOVEM.W     D0, -(A0)
+            MOVEM.W     D0, $1234
+            MOVEM.W     D0, $1234BCAC
+    
+            MOVEM.W     D0-D3, (A0)
+            MOVEM.W     D0/A6/A5, -(A0)
+            MOVEM.W     A7-A0, $1234
+            MOVEM.W     D6/D2/D1, $1234BCAC
+    
+            MOVEM.L     D0, (A0)
+            MOVEM.L     D0, -(A0)
+            MOVEM.L     D0, $1234
+            MOVEM.L     D0, $1234BCAC
+    
+            MOVEM.L     D0-D3, (A0)
+            MOVEM.L     D0/A6/A5, -(A0)
+            MOVEM.L     A7-A0, $1234
+            MOVEM.L     D6/D2/D1, $1234BCAC
+    
+            MOVEM.W     (A0), D0
+            MOVEM.W     (A0)+, D0
+            MOVEM.W     $1234, D0
+            MOVEM.W     $1234BCAC, D0
+    
+            MOVEM.W     (A0), D0-D2
+            MOVEM.W     (A0)+, D0/D4/D2
+            MOVEM.W     $1234, D0/D6
+            MOVEM.W     $1234BCAC, D0/D4/D2
+    
+            MOVEM.L     (A0), D0
+            MOVEM.L     (A0)+, D0
+            MOVEM.L     $1234, D0
+            MOVEM.L     $1234BCAC, D0
+    
+            MOVEM.L     (A0), D0-D2
+            MOVEM.L     (A0)+, D0-D3/d5-d7/A6-A7
+            MOVEM.L     $1234, D0/D6
+            MOVEM.L     $1234BCAC, D0/D4/D2
+            
+*------------------------ MULS --------------------------------------------           
+        MULS.W   D0, D1
+        MULS.W   (A0), D1
+        MULS.W   (A0)+, D1
+        MULS.W   -(A0), D1
+        MULS.W   $4000, D1
+        MULS.W   $00004000, D1
+        MULS.W   #123, D1
+
+        DIVS.W   D0, D1
+        DIVS.W   (A0), D1
+        DIVS.W   (A0)+, D1
+        DIVS.W   -(A0), D1
+        DIVS.W   $4000, D1
+        DIVS.W   $00004000, D1
+        DIVS.W   #123, D1
+        
+        *---------- OR : FIXED DESTINATION ---------- 
+        OR.B    D1, D0
+        OR.B    (A0), D0
+        OR.B    (A0)+, D0
+        OR.B    -(A0), D0
+        OR.B    $4000, D0
+        OR.B    $40000000, D0
+        OR.B    #1, D0
+        
+        OR.W    D1, D0
+        OR.W    (A0), D0
+        OR.W    (A0)+, D0
+        OR.W    -(A0), D0
+        OR.W    $4000, D0
+        OR.W    $40000000, D0
+        OR.W    #1234, D0
+        
+        OR.L    D1, D0
+        OR.L    (A0), D0
+        OR.L    (A0)+, D0
+        OR.L    -(A0), D0
+        OR.L    $4000, D0
+        OR.L    $40000000, D0
+        OR.L    #1234, D0
+        
+*------------ OR : FIXED SOURCE ------------- 
+
+        OR.B    D0, (A0)
+        OR.B    D0, (A0)+
+        OR.B    D0, -(A0)
+        OR.B    D0, $4000
+        OR.B    D0, $40000000
+        
+        OR.W    D0, (A0)
+        OR.W    D0, (A0)+
+        OR.W    D0, -(A0)
+        OR.W    D0, $4000
+        OR.W    D0, $40000000
+        
+        OR.L    D0, (A0)
+        OR.L    D0, (A0)+
+        OR.L    D0, -(A0)
+        OR.L    D0, $4000
+        OR.L    D0, $40000000
+        
+*------------------- ORI -------------------- 
+
+        ORI.B   #4, D0
+        ORI.B   #4, (A0)
+        ORI.B   #4, (A0)+
+        ORI.B   #4, -(A0)
+        ORI.B   #4, $4000
+        ORI.B   #4, $40000000
+
+        ORI.W   #1234, D0
+        ORI.W   #1234, (A0)
+        ORI.W   #1234, (A0)+
+        ORI.W   #1234, -(A0)
+        ORI.W   #1234, $4000
+        ORI.W   #1234, $40000000
+        
+        ORI.L   #1234, D0
+        ORI.L   #1234, (A0)
+        ORI.L   #1234, (A0)+
+        ORI.L   #1234, -(A0)
+        ORI.L   #1234, $4000
+        ORI.L   #1234, $40000000
+        
+*-------------------- LSR --------------------
+        LSR.B		D1, D2
+        LSR.B		#3,D1
+        
+        LSR.W		D1, D2
+        LSR.W		#3,D1
+        
+        LSR.W		(A1)
+        LSR.W		(A1)+
+        LSR.W		-(A1)
+        LSR.W		$4000
+        LSR.W		$40000000
+
+        LSR.L		D1, D2
+        LSR.L		#3,D1
+
+*-------------------- LSL --------------------
+
+        LSL.B		D1, D2
+        LSL.B		#3,D1
+
+        LSL.W		D1, D2
+        LSL.W		#3,D1
+        LSL.W		(A1)
+        LSL.W		(A1)+
+        LSL.W		-(A1)
+        LSL.W		$4000
+        LSL.W		$40000000
+
+        LSL.L		D1, D2
+        LSL.L		#3,D1
+
+*-------------------- ASR --------------------
+
+        ASR.B		D1, D2
+        ASR.B		#3,D1
+
+        ASR.W		D1, D2
+        ASR.W		#3,D1
+        ASR.W		(A1)
+        ASR.W		(A1)+
+        ASR.W		-(A1)
+        ASR.W		$4000
+        ASR.W		$40000000
+
+        ASR.L		D1, D2
+        ASR.L		#3,D1
+
+*-------------------- ASL --------------------
+
+        ASL.B		D1, D2
+        ASL.B		#3,D1
+
+        ASL.W		D1, D2
+        ASL.W		#3,D1
+        ASL.W		(A1)
+        ASL.W		(A1)+
+        ASL.W		-(A1)
+        ASL.W		$4000
+        ASL.W		$40000000
+
+        ASL.L		D1, D2
+        ASL.L		#3,D1
+
+*-------------------- ROR --------------------
+
+        ROR.B		D1, D2
+        ROR.B		#3,D1
+        
+        ROR.W		D1, D2
+        ROR.W		#3,D1
+        ROR.W		(A1)
+        ROR.W		(A1)+
+        ROR.W		-(A1)
+        ROR.W		$4000
+        ROR.W		$40000000
+
+        ROR.L		D1, D2
+        ROR.L		#3,D1
+
+*-------------------- ROL --------------------
+        ROL.B		D1, D2
+        ROL.B		#3,D1
+
+        ROL.W		D1, D2
+        ROL.W		#3,D1
+        ROL.W		(A1)
+        ROL.W		(A1)+
+        ROL.W		-(A1)
+        ROL.W		$4000
+        ROL.W		$40000000
+
+        ROL.L		D1, D2
+        ROL.L		#3,D1
+
+*--------------------- SUB ---------------------------------
+*------------ FIXED DESTINATION: SOURCE OPERAND ------------
+
+        SUB.B   D0, D1                  ;SUBING D0 WITH D1, THEN STORE RESULT IN D1
+        SUB.B   (A0), D1                ;SUBING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1
+        SUB.B   (A0)+, D1               ;SUBING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1, THEN INCREMENT THE POINTER
+        SUB.B   -(A0), D1               ;DECREMENT THE POINTER, THEN SUBING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1
+        SUB.B   $4000, D1               ;SUBING DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN D1
+        SUB.B   $00004000, D1           ;SUBING DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN 
+        SUB.B   #$1, D1                 ;SUBING A BYTE SIZE DATA WITH D1 AND STORE RESULT IN D1
+        
+        SUB.W   D0, D1                  ;SUBING D0 AND D1, THEN STORE RESULT IN D1
+        SUB.W   A0, D1                  ;SUBING DATA STORING IN A0 WITH D1 AND STORE RESULT IN D1
+        SUB.W   (A0), D1                ;SUBING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1
+        SUB.W   (A0)+, D1               ;SUBING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1, THEN INCREMENT THE POINTER
+        SUB.W   -(A0), D1               ;DECREMENT THE POINTER, THEN SUBING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1
+        SUB.W   $4000, D1               ;SUBING DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN 
+        SUB.W   $00004000, D1           ;SUBING DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN 
+        ;SUB.W   #$12, D1                ;SUBING A WORD SIZE DATA WITH D1 AND STORE RESULT IN D1
+        
+        SUB.L   D0, D1                  ;SUBING D0 AND D1, THEN STORE RESULT IN D1
+        SUB.L   A0, D1                  ;SUBING DATA STORING IN A0 WITH D1 AND STORE RESULT IN D1
+        SUB.L   (A0), D1                ;SUBING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1
+        SUB.L   (A0)+, D1               ;SUBING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1, THEN INCREMENT THE POINTER
+        SUB.L   -(A0), D1               ;DECREMENT THE POINTER, THEN SUBING DATA THAT A0 POINTS TO WITH D1 AND STORE RESULT IN D1
+        SUB.L   $4000, D1               ;SUBING DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN 
+        SUB.L   $00004000, D1           ;SUBING DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN 
+        ;SUB.L   #$1234, D1              ;SUBING A LONG SIZE DATA WITH D1 AND STORE RESULT IN D1
+            
+*------------ FIXED SOURCE: DESTINATION OPERAND ------------
+
+        SUB.B   D0, (A0)                ;SUBING D0 WITH DATA THAT A0 POINTS TO, THEN STORE RESULT IN ADDRESS A0 POINTS TO
+        SUB.B   D0, (A0)+               ;SUBING D0 WITH DATA THAT A0 POINTS TO, STORE RESULT IN THE ADDRESS A0 POINT TO AND INCREMENT POINTER 
+        SUB.B   D0, -(A0)               ;SUBING D0 WITH DATA THAT A0 POINTS TO, DECREMENT POINTER, THEN STORE RESULT IN THAT ADDRESS 
+        SUB.B   D0, $4000               ;SUBINT D0 WITH DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN THAT ADDRESS
+        SUB.B   D0, $00004000           ;SUBINT D0 WITH DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN THAT ADDRESS
+        
+        SUB.W   D0, (A0)                ;SUBING D0 WITH DATA THAT A0 POINTS TO, THEN STORE RESULT IN ADDRESS A0 POINTS TO
+        SUB.W   D0, (A0)+               ;SUBING D0 WITH DATA THAT A0 POINTS TO, STORE RESULT IN THE ADDRESS A0 POINT TO AND INCREMENT POINTER 
+        SUB.W   D0, -(A0)               ;SUBING D0 WITH DATA THAT A0 POINTS TO, DECREMENT POINTER, THEN STORE RESULT IN THAT ADDRESS 
+        SUB.W   D0, $4000               ;SUBINT D0 WITH DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN THAT ADDRESS
+        SUB.W   D0, $00004000           ;SUBINT D0 WITH DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN THAT ADDRESS
+        
+        SUB.L   D0, (A0)                ;SUBING D0 WITH DATA THAT A0 POINTS TO, THEN STORE RESULT IN ADDRESS A0 POINTS TO
+        SUB.L   D0, (A0)+               ;SUBING D0 WITH DATA THAT A0 POINTS TO, STORE RESULT IN THE ADDRESS A0 POINT TO AND INCREMENT POINTER 
+        SUB.L   D0, -(A0)               ;SUBING D0 WITH DATA THAT A0 POINTS TO, DECREMENT POINTER, THEN STORE RESULT IN THAT ADDRESS 
+        SUB.L   D0, $4000               ;SUBING D0 WITH DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN THAT ADDRESS
+        SUB.L   D0, $00004000           ;SUBING D0 WITH DATA AT THE GIVEN ADDRESS WITH D1 AND STORE RESULT IN THAT ADDRESS
+
+
+*----------------------- SUBQ -------------------------------
+        SUBQ.B   #1, D0
+        SUBQ.B   #1, (A0)
+        SUBQ.B   #1, (A0)+
+        SUBQ.B   #1, -(A0)
+        SUBQ.B   #1, $4000
+        SUBQ.B   #1, $00004000 
+     
+        SUBQ.W   #1, D0
+        SUBQ.W   #1, (A0)
+        SUBQ.W   #1, (A0)+
+        SUBQ.W   #1, -(A0)
+        SUBQ.W   #1, $4000
+        SUBQ.W   #1, $00004000 
+        
+        SUBQ.L   #1, D0
+        SUBQ.L   #1, (A0)
+        SUBQ.L   #1, (A0)+
+        SUBQ.L   #1, -(A0)
+        SUBQ.L   #1, $4000
+        SUBQ.L   #1, $00004000 
+        
+*----------------------------------------------------------------------
+* THE INSTRUCTIONS BELOW ARE THE OPCODES THAT ARE NOT IN 
+*   THE REQUIREMENT
+*----------------------------------------------------------------------        
+        
+        BTST    D0, D1          ;BAD DATA
+        BCHG    D0, D1          ;BAD DATA
+        BSET    D0, D1          ;BAD DATA
+        NEGX.L  D1              ;BAD DATA
+        CLR     D1              ;BAD DATA
+        NOT     D0              ;BAD DATA
+        EXT     D1              ;THIS WILL AUTOMATICALLY CALLED "MOVEM.W"
+        SWAP    D1              ;BAD DATA
+        ILLEGAL D1              ;BAD DATA
+        TAS     D1              ;BAD DATA
+        TST     D1              ;BAD DATA
+        UNLK    A1              ;BAD DATA
+        RESET   D1              ;BAD DATA
+        NOP     D1              ;BAD DATA
+        RTE     D1              ;BAD DATA
+        TRAPV   D1              ;BAD DATA
+        RTR     D1              ;BAD DATA
+        CHK     D1,D2           ;BAD DATA
+        ADDQ    #1 ,D2          ;BAD DATA
+        MOVEQ   #1, D2          ;BAD DATA
+        DIVU    D1, D2          ;BAD DATA
+        SBCD    D0, D1          ;THIS WILL AUTOMATICALLY CALLED "OR.B"
+        SUBX    D0, D1          ;THIS WILL AUTOMATICALLY CALLED "SUB.Q"
+        CMPA    D0, A1          ;BAD DATA
+        MULU    D0, D1          ;BAD DATA
+        AND     D0, D1          ;BAD DATA
+        ADDA    A0, A1          ;THIS WILL AUTOMATICALLY CALLED "ADDA"
+        ROXL    D0, D1          ;BAD DATA
+        ROXR    D0, D1          ;BAD DATA
+
+HEY     MOVE.B  D1, D2
+
+
+    END    START
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*~Font name~Courier New~
+*~Font size~10~
+*~Tab type~1~
+*~Tab size~4~
